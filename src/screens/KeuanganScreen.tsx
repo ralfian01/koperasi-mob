@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { styled } from "nativewind";
+// FIX: Corrected import path for 'styled' from nativewind.
+import { styled } from "nativewind/styled";
 
 // FIX: Apply styled HOC to enable className prop on components.
 const StyledView = styled(View);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
-import { styled } from "nativewind";
+// FIX: Corrected import path for 'styled' from nativewind.
+import { styled } from "nativewind/styled";
 // Assuming you have an icon component or library
 // import { Feather } from '@expo/vector-icons';
 

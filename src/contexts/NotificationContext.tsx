@@ -1,7 +1,8 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 import { View } from 'react-native';
 import Notification from '../components/Notification';
-import { styled } from 'nativewind';
+// FIX: Corrected import path for 'styled' from nativewind.
+import { styled } from 'nativewind/styled';
 
 // FIX: Apply styled HOC to enable className prop.
 const StyledView = styled(View);

@@ -3,7 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, SafeAreaVie
 import { useAuth } from '../../contexts/AuthContext';
 import { useNotification } from '../../contexts/NotificationContext';
 import { User } from '../../types';
-import { styled } from "nativewind";
+// FIX: Corrected import path for 'styled' from nativewind.
+import { styled } from "nativewind/styled";
 
 // FIX: Apply styled HOC to enable className prop on components.
 const StyledSafeAreaView = styled(SafeAreaView);

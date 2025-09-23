@@ -2,7 +2,8 @@ import React, { useMemo } from 'react';
 import { ScrollView, View, Text, FlatList } from 'react-native';
 import usePosData from '../hooks/usePosData';
 import { Product, Variant } from '../types';
-import { styled } from 'nativewind';
+// FIX: Corrected import path for 'styled' from nativewind.
+import { styled } from 'nativewind/styled';
 
 // FIX: Apply styled HOC to enable className prop on components.
 const StyledScrollView = styled(ScrollView);

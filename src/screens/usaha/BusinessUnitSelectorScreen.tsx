@@ -3,7 +3,8 @@ import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react
 import { useNavigation } from '@react-navigation/native';
 import { useNotification } from '../../contexts/NotificationContext';
 import { BusinessUnit } from '../../types';
-import { styled } from "nativewind";
+// FIX: Corrected import path for 'styled' from nativewind.
+import { styled } from "nativewind/styled";
 
 // FIX: Apply styled HOC to enable className prop on components.
 const StyledView = styled(View);
