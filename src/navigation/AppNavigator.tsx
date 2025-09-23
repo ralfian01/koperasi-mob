@@ -5,11 +5,6 @@ import { useAuth } from '../contexts/AuthContext';
 import LoginScreen from '../screens/auth/LoginScreen';
 import MainTabNavigator from './MainTabNavigator';
 import { View, ActivityIndicator } from 'react-native';
-// FIX: Corrected import path for 'styled' from nativewind.
-import { styled } from "nativewind/styled";
-
-// FIX: Apply styled HOC to enable className prop.
-const StyledView = styled(View);
 
 const Stack = createNativeStackNavigator();
 
@@ -18,9 +13,9 @@ const AppNavigator = () => {
 
   if (isLoading) {
     return (
-      <StyledView className="flex-1 justify-center items-center bg-slate-50">
+      <View className="flex-1 justify-center items-center bg-slate-50">
         <ActivityIndicator size="large" color="#4f46e5" />
-      </StyledView>
+      </View>
     );
   }
 

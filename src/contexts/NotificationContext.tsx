@@ -1,11 +1,6 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 import { View } from 'react-native';
 import Notification from '../components/Notification';
-// FIX: Corrected import path for 'styled' from nativewind.
-import { styled } from 'nativewind/styled';
-
-// FIX: Apply styled HOC to enable className prop.
-const StyledView = styled(View);
 
 type NotificationType = 'success' | 'error' | 'info';
 
@@ -44,7 +39,7 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
   return (
     <NotificationContext.Provider value={{ addNotification }}>
       {children}
-      <StyledView className="absolute top-12 right-4 left-4 z-50 space-y-3">
+      <View className="absolute top-12 right-4 left-4 z-50 space-y-3">
         {notifications.map(notification => (
           <Notification
             key={notification.id}
@@ -53,7 +48,7 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
             onClose={() => removeNotification(notification.id)}
           />
         ))}
-      </StyledView>
+      </View>
     </NotificationContext.Provider>
   );
 };

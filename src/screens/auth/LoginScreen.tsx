@@ -3,15 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, SafeAreaVie
 import { useAuth } from '../../contexts/AuthContext';
 import { useNotification } from '../../contexts/NotificationContext';
 import { User } from '../../types';
-// FIX: Corrected import path for 'styled' from nativewind.
-import { styled } from "nativewind/styled";
-
-// FIX: Apply styled HOC to enable className prop on components.
-const StyledSafeAreaView = styled(SafeAreaView);
-const StyledView = styled(View);
-const StyledText = styled(Text);
-const StyledTextInput = styled(TextInput);
-const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const LoginScreen = () => {
   const [username, setUsername] = useState('');
@@ -53,17 +44,17 @@ const LoginScreen = () => {
   };
 
   return (
-    <StyledSafeAreaView className="flex-1 bg-slate-100 justify-center items-center">
-      <StyledView className="w-full max-w-sm p-8 space-y-8 bg-white rounded-xl shadow-lg">
-        <StyledView className="items-center">
+    <SafeAreaView className="flex-1 bg-slate-100 justify-center items-center">
+      <View className="w-full max-w-sm p-8 space-y-8 bg-white rounded-xl shadow-lg">
+        <View className="items-center">
           {/* Placeholder for LogoIcon */}
-          <StyledView className="w-12 h-12 bg-red-100 rounded-lg" />
-          <StyledText className="mt-4 text-3xl font-bold text-center text-slate-900">Login</StyledText>
-          <StyledText className="mt-2 text-sm text-center text-slate-600">Silakan masukkan kredensial Anda.</StyledText>
-        </StyledView>
+          <View className="w-12 h-12 bg-red-100 rounded-lg" />
+          <Text className="mt-4 text-3xl font-bold text-center text-slate-900">Login</Text>
+          <Text className="mt-2 text-sm text-center text-slate-600">Silakan masukkan kredensial Anda.</Text>
+        </View>
 
-        <StyledView className="space-y-4">
-          <StyledTextInput
+        <View className="space-y-4">
+          <TextInput
             className="w-full px-3 py-3 text-gray-900 border border-gray-300 rounded-md"
             placeholder="Username"
             value={username}
@@ -71,7 +62,7 @@ const LoginScreen = () => {
             editable={!isLoading}
             autoCapitalize="none"
           />
-          <StyledTextInput
+          <TextInput
             className="w-full px-3 py-3 text-gray-900 border border-gray-300 rounded-md"
             placeholder="Password"
             value={password}
@@ -79,9 +70,9 @@ const LoginScreen = () => {
             secureTextEntry
             editable={!isLoading}
           />
-        </StyledView>
+        </View>
 
-        <StyledTouchableOpacity
+        <TouchableOpacity
           onPress={handleLogin}
           disabled={isLoading}
           className="flex-row justify-center w-full px-4 py-3 bg-red-600 rounded-md disabled:bg-red-400"
@@ -89,11 +80,11 @@ const LoginScreen = () => {
           {isLoading ? (
             <ActivityIndicator color="white" />
           ) : (
-            <StyledText className="text-sm font-medium text-white">Login</StyledText>
+            <Text className="text-sm font-medium text-white">Login</Text>
           )}
-        </StyledTouchableOpacity>
-      </StyledView>
-    </StyledSafeAreaView>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 };
 

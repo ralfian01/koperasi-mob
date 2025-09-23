@@ -2,13 +2,6 @@ import React, { useMemo } from 'react';
 import { ScrollView, View, Text, FlatList } from 'react-native';
 import usePosData from '../hooks/usePosData';
 import { Product, Variant } from '../types';
-// FIX: Corrected import path for 'styled' from nativewind.
-import { styled } from 'nativewind/styled';
-
-// FIX: Apply styled HOC to enable className prop on components.
-const StyledScrollView = styled(ScrollView);
-const StyledView = styled(View);
-const StyledText = styled(Text);
 
 const formatNumberCompact = (num: number): string => {
   if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1).replace('.', ',')} Juta`;
@@ -19,10 +12,10 @@ const formatNumberCompact = (num: number): string => {
 const formatCurrency = (amount: number) => `Rp${amount.toLocaleString('id-ID')}`;
 
 const MetricCard: React.FC<{ title: string; value: string; }> = ({ title, value }) => (
-    <StyledView className="bg-white p-4 rounded-lg shadow-md flex-1">
-        <StyledText className="text-sm text-slate-500 font-medium">{title}</StyledText>
-        <StyledText className="text-2xl font-bold text-slate-800 mt-1">{value}</StyledText>
-    </StyledView>
+    <View className="bg-white p-4 rounded-lg shadow-md flex-1">
+        <Text className="text-sm text-slate-500 font-medium">{title}</Text>
+        <Text className="text-2xl font-bold text-slate-800 mt-1">{value}</Text>
+    </View>
 );
 
 const DashboardScreen = () => {
@@ -42,34 +35,34 @@ const DashboardScreen = () => {
     }, [businessUnits, outlets, transactions]);
 
     return (
-        <StyledScrollView className="bg-slate-100 p-4">
-            <StyledText className="text-3xl font-bold text-slate-800 mb-4">Dasbor Keseluruhan</StyledText>
+        <ScrollView className="bg-slate-100 p-4">
+            <Text className="text-3xl font-bold text-slate-800 mb-4">Dasbor Keseluruhan</Text>
             
-            <StyledView className="flex-row gap-4 mb-6">
+            <View className="flex-row gap-4 mb-6">
                 <MetricCard title="Total Pendapatan" value={`Rp${formatNumberCompact(totalRevenue)}`} />
                 <MetricCard title="Total Penjualan" value={formatNumberCompact(totalSales)} />
-            </StyledView>
+            </View>
 
-            <StyledView className="bg-white p-4 rounded-lg shadow-md mb-6">
-                <StyledText className="text-xl font-bold text-slate-800 mb-2">Laporan Ringkas</StyledText>
+            <View className="bg-white p-4 rounded-lg shadow-md mb-6">
+                <Text className="text-xl font-bold text-slate-800 mb-2">Laporan Ringkas</Text>
                 {summaryReport.length > 0 ? (
                     summaryReport.map(report => (
-                        <StyledView key={report.unitId} className="flex-row justify-between py-2 border-b border-slate-100">
-                            <StyledText className="font-medium text-slate-800">{report.unitName}</StyledText>
-                            <StyledText className="text-slate-700">{formatCurrency(report.omzet)}</StyledText>
-                        </StyledView>
+                        <View key={report.unitId} className="flex-row justify-between py-2 border-b border-slate-100">
+                            <Text className="font-medium text-slate-800">{report.unitName}</Text>
+                            <Text className="text-slate-700">{formatCurrency(report.omzet)}</Text>
+                        </View>
                     ))
                 ) : (
-                    <StyledText className="text-center py-6 text-slate-500">Tidak ada data.</StyledText>
+                    <Text className="text-center py-6 text-slate-500">Tidak ada data.</Text>
                 )}
-            </StyledView>
+            </View>
 
-            <StyledView className="bg-white p-4 rounded-lg shadow-md">
-                <StyledText className="text-xl font-bold text-slate-800 mb-2">Peringatan Stok Rendah</StyledText>
+            <View className="bg-white p-4 rounded-lg shadow-md">
+                <Text className="text-xl font-bold text-slate-800 mb-2">Peringatan Stok Rendah</Text>
                 {/* Simplified low stock view for mobile */}
-                <StyledText className="text-center py-6 text-slate-500">Fitur stok rendah akan ditampilkan di sini.</StyledText>
-            </StyledView>
-        </StyledScrollView>
+                <Text className="text-center py-6 text-slate-500">Fitur stok rendah akan ditampilkan di sini.</Text>
+            </View>
+        </ScrollView>
     );
 };
 

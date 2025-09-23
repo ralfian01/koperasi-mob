@@ -1,13 +1,6 @@
 import React, { useMemo } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import usePosData from '../../hooks/usePosData';
-// FIX: Corrected import path for 'styled' from nativewind.
-import { styled } from "nativewind/styled";
-
-// FIX: Apply styled HOC to enable className prop on components.
-const StyledScrollView = styled(ScrollView);
-const StyledView = styled(View);
-const StyledText = styled(Text);
 
 const formatNumberCompact = (num: number): string => {
   if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1)} Jt`;
@@ -16,10 +9,10 @@ const formatNumberCompact = (num: number): string => {
 };
 
 const MetricCard: React.FC<{ title: string; value: string; }> = ({ title, value }) => (
-    <StyledView className="bg-white p-4 rounded-lg shadow-md flex-1">
-        <StyledText className="text-sm text-slate-500 font-medium">{title}</StyledText>
-        <StyledText className="text-2xl font-bold text-slate-800 mt-1">{value}</StyledText>
-    </StyledView>
+    <View className="bg-white p-4 rounded-lg shadow-md flex-1">
+        <Text className="text-sm text-slate-500 font-medium">{title}</Text>
+        <Text className="text-2xl font-bold text-slate-800 mt-1">{value}</Text>
+    </View>
 );
 
 const UnitDashboardScreen = ({ route }: any) => {
@@ -37,21 +30,21 @@ const UnitDashboardScreen = ({ route }: any) => {
     }, [unitId, outlets, products, transactions]);
 
     return (
-        <StyledScrollView className="bg-slate-100 p-4">
-            <StyledText className="text-2xl font-bold text-slate-800 mb-4">Dasbor: {unitName}</StyledText>
+        <ScrollView className="bg-slate-100 p-4">
+            <Text className="text-2xl font-bold text-slate-800 mb-4">Dasbor: {unitName}</Text>
             
-            <StyledView className="flex-row gap-4 mb-6">
+            <View className="flex-row gap-4 mb-6">
                 <MetricCard title="Pendapatan" value={`Rp${formatNumberCompact(totalRevenue)}`} />
                 <MetricCard title="Penjualan" value={formatNumberCompact(totalSales)} />
-            </StyledView>
+            </View>
             <MetricCard title="Total Produk Aktif" value={formatNumberCompact(totalProducts)} />
             
-             <StyledView className="bg-white p-4 rounded-lg shadow-md mt-6">
-                <StyledText className="text-xl font-bold text-slate-800 mb-2">Menu Cepat</StyledText>
-                <StyledText className="text-slate-600 mb-2">Navigasi ke manajemen produk, outlet, dll. akan ditambahkan di sini.</StyledText>
+             <View className="bg-white p-4 rounded-lg shadow-md mt-6">
+                <Text className="text-xl font-bold text-slate-800 mb-2">Menu Cepat</Text>
+                <Text className="text-slate-600 mb-2">Navigasi ke manajemen produk, outlet, dll. akan ditambahkan di sini.</Text>
                 {/* Future navigation buttons would go here */}
-            </StyledView>
-        </StyledScrollView>
+            </View>
+        </ScrollView>
     );
 };
 

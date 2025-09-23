@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
-// FIX: Corrected import path for 'styled' from nativewind.
-import { styled } from "nativewind/styled";
 // Assuming you have an icon component or library
 // import { Feather } from '@expo/vector-icons';
-
-// FIX: Apply styled HOC to enable className prop on components.
-const StyledAnimatedView = styled(Animated.View);
-const StyledView = styled(View);
-const StyledText = styled(Text);
-const StyledTouchableOpacity = styled(TouchableOpacity);
-
 
 interface NotificationProps {
   message: string;
@@ -76,20 +67,20 @@ const Notification: React.FC<NotificationProps> = ({ message, type, onClose }) =
   const title = type.charAt(0).toUpperCase() + type.slice(1);
 
   return (
-    <StyledAnimatedView
+    <Animated.View
       style={{ opacity: fadeAnim, transform: [{ translateY: slideAnim }] }}
       className={`w-full p-4 rounded-lg shadow-lg border-l-4 ${styles.bg} ${styles.border} flex-row items-start`}
     >
       {/* <Feather name={styles.icon as any} size={24} className={styles.text} /> */}
-      <StyledView className="mx-3 flex-1">
-        <StyledText className={`font-bold text-sm ${styles.text}`}>{title}</StyledText>
-        <StyledText className={`mt-1 text-sm ${styles.text}`}>{message}</StyledText>
-      </StyledView>
-      <StyledTouchableOpacity onPress={handleClose} className="p-1">
+      <View className="mx-3 flex-1">
+        <Text className={`font-bold text-sm ${styles.text}`}>{title}</Text>
+        <Text className={`mt-1 text-sm ${styles.text}`}>{message}</Text>
+      </View>
+      <TouchableOpacity onPress={handleClose} className="p-1">
         {/* <Feather name="x" size={20} className={styles.text} /> */}
-         <StyledText className={styles.text}>X</StyledText>
-      </StyledTouchableOpacity>
-    </StyledAnimatedView>
+         <Text className={styles.text}>X</Text>
+      </TouchableOpacity>
+    </Animated.View>
   );
 };
 
